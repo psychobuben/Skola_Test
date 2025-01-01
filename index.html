@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+    .prvni-sekce{
+        display: grid;
+        grid-template-areas: 
+                "1"
+                "2"
+                "3"
+                "4"
+                "5";
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-items: center;
+        gap: 20px;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: #f8f9fa;
+        box-sizing: border-box;
+    }
+    .profil{
+        grid-area: 1;
+        display: flex;
+        gap:10vw;
+
+    }
+    .profil img {
+            width: 25vw;
+            height: 25vw;
+            min-width: 150px;
+            min-height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+    }
+    .kontakt{
+        grid-area: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .kontakt img {
+            width: 20px;
+            height: 20px;
+    }
+    .kontakt div {
+        display: flex;
+        align-items: center;
+        gap: 10px; 
+    }
+   
+    .cara {
+        grid-area: 3;
+        border: 1px solid #ccc;
+        width: 80%;
+    }
+    .social {
+        grid-area: 4;
+        display: flex;
+        gap: 10vw;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .social img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social a:nth-child(1) img:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s;
+    }
+    .social a:nth-child(2) img:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s;
+    }
+    .social a:nth-child(3) img:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s;
+    }
+
+
+    .odkaz {
+        grid-area: 5;
+    }
+    .odkaz img {
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
+
+    .odkaz:hover{
+        background-color: gray;
+        color: white;
+        border-radius: 50%;
+        transition: background-color 0.3s, transform 0.2s;
+        transform: scale(1.2);
+    }
+    .druha-sekce{
+        display: grid;
+        grid-template-areas: 
+                "1"
+                "2"
+                "3"
+                "4";
+             
+        grid-template-rows: auto auto auto;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-items: center;
+        gap: 20px;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: #f8f9fa;
+        box-sizing: border-box;
+    }
+    .druha-sekce .odkaz {
+        grid-area: 1;
+    }
+    .druha-sekce .odkaz img {
+        transform-origin: center;
+        transform: rotate(180deg);
+    }
+    .druha-sekce .iframe {
+        grid-area: 2;
+    }
+    .iframe iframe {
+        min-width: 80vw;
+        min-height: 60vh;
+    }
+    .druha-sekce .button {
+        grid-area: 3;
+    }
+    .button button {
+        padding: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border: none;
+        color: gray;
+        border-radius: 20px;
+    }
+    .button button:hover {
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        background-color: gray;
+        color: white;
+        transform: scale(1.2);
+    }
+    .druha-sekce .rezervacniFormular {
+        grid-area: 4;
+        overflow-y: auto; /* Enable scrolling */
+        height: 30vh;
+        width: 80vw;
+        text-align: center;
+        display: none;
+
+        
+
+    }
+
+  .rezervacniFormular button {
+        padding: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border: none;
+        color: gray;
+        border-radius: 20px;
+    }
+</style>
+<body>
+    <div class="prvni-sekce" id="1">
+        <div class="profil">
+          <img src="./Assets/profilovka.jpg" alt="Mladý muž, hrající na bicí nástroje.">
+        </div>
+        <div class="kontakt">
+            <div>
+                <img src="./Assets/mobil.png" alt="">
+                <p>+420 000 000 000</p>  
+            </div>
+            <div>
+                <img src="./Assets/e-mail.png" alt="">
+                <p>example@email.com</p>
+            </div>
+           
+        </div>
+        <div class="cara"></div>
+
+        <div class="social">
+
+            <a href="https://www.facebook.com/jan.konrad.777/">
+           <img src="./Assets/Facebook.png" alt="Facebook">
+            </a>
+
+            <a href="https://www.instagram.com/honza_konrad94/">
+           <img src="./Assets/Instagram.png" alt="Instagram">
+            </a>
+
+            <a href="https://youtube.com/@jankonrad1451?si=ynIiidWr5nXz89vR">
+           <img src="./Assets/Youtube.png" alt="Youtube">
+            </a>
+
+        </div>
+        <div class="odkaz">
+            <a href="#2">
+            <img src="./Assets/Sipka.png" alt="">
+            </a>
+        </div>
+  </div>
+
+  <div class="druha-sekce" id="2">
+    <div id="sipka" class="odkaz">
+        <a href="#1">
+        <img  src="./Assets/Sipka.png" alt="">
+        </a>
+    </div>
+    <div class="iframe">
+        <iframe id="kalendar" src="https://outlook.live.com/owa/calendar/00000000-0000-0000-0000-000000000000/ecf066c0-9367-41fe-a307-a68ea69b384e/cid-B7BEA6168F5981FA/index.html" frameborder="0"></iframe>
+
+    </div>
+    <div class="button">
+        <button id="rezervaceBtn">Zarezervovat termín</button>
+    </div>
+    <div class="rezervacniFormular">
+        <button id="rezervaceClosed">Zavřít formlulář</button>
+        <p>Jméno a příjmení</p>
+        <p>E-mail</p>
+        <p>Telefon</p>
+        <p>Typ rezervace</p>
+        <p>Výuka</p>
+        <p>Hudební produkce</p>
+        <p>Datum</p>
+        <p>Čas</p>
+        <p>místo</p>
+        <p>Se zkouškou</p>
+        <button>Odeslat objednávku</button>
+    </div>
+  </div>
+  <script>
+document.getElementById("rezervaceBtn").addEventListener("click", function () {
+    
+    // Získá reference na tlačítka, šipky a formuláře
+    const rezervaceBtn = document.getElementById("rezervaceBtn");
+    const rezervacniFormular = document.querySelector(".rezervacniFormular");
+    const sipka = document.getElementById("sipka");
+
+    // Skrytí šipky
+    sipka.style.display = "none";
+
+    // Skrytí tlačítka pro rezervaci
+    rezervaceBtn.style.display = "none";
+
+    // Zobrazení formuláře pod iframe
+    rezervacniFormular.style.gridArea = "4"; 
+    rezervacniFormular.style.display = "block";  // Zajistí zobrazení formuláře
+
+});
+
+document.getElementById("rezervaceClosed").addEventListener("click", function () {
+
+    const rezervaceBtn = document.getElementById("rezervaceBtn");
+    const rezervacniFormular = document.querySelector(".rezervacniFormular");
+    const sipka = document.getElementById("sipka");
+
+    // Skrytí formuláře
+    rezervacniFormular.style.display = "none";
+
+    // Obnovení zobrazení šipky
+    sipka.style.display = "block";
+
+    // Opětovné zobrazení tlačítka pro rezervaci
+    rezervaceBtn.style.display = "block";
+});
+
+
+  </script>
+</body>
+</html>
