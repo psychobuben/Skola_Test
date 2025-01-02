@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -148,7 +148,7 @@
     .druha-sekce .button {
         grid-area: 3;
     }
-    .button button {
+    .button {
         padding: 10px;
         font-size: 1.2rem;
         cursor: pointer;
@@ -156,32 +156,87 @@
         color: gray;
         border-radius: 20px;
     }
-    .button button:hover {
+    .button:hover {
         transition: background-color 0.3s ease, transform 0.2s ease;
         background-color: gray;
         color: white;
         transform: scale(1.2);
     }
-    .druha-sekce .rezervacniFormular {
-        grid-area: 4;
-        overflow-y: auto; /* Enable scrolling */
-        height: 30vh;
-        width: 80vw;
-        text-align: center;
+  
+    .treti-sekce {
         display: none;
-
-        
+        grid-template-areas: 
+                "1"
+                "2"
+                "3";
+               
+        grid-template-rows: auto auto auto;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-items: center;
+        gap: 20px;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: #f8f9fa;
+        box-sizing: border-box;
 
     }
 
-  .rezervacniFormular button {
-        padding: 10px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        border: none;
-        color: gray;
-        border-radius: 20px;
-    }
+    .formular {
+        grid-area: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    } 
+
+
+    form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+
+
+
 </style>
 <body>
     <div class="prvni-sekce" id="1">
@@ -223,7 +278,7 @@
         </div>
   </div>
 
-  <div class="druha-sekce" id="2">
+<div class="druha-sekce" id="2">
     <div id="sipka" class="odkaz">
         <a href="#1">
         <img  src="./Assets/Sipka.png" alt="">
@@ -233,61 +288,58 @@
         <iframe id="kalendar" src="https://outlook.live.com/owa/calendar/00000000-0000-0000-0000-000000000000/ecf066c0-9367-41fe-a307-a68ea69b384e/cid-B7BEA6168F5981FA/index.html" frameborder="0"></iframe>
 
     </div>
-    <div class="button">
-        <button id="rezervaceBtn">Zarezervovat termín</button>
+    <div>
+        <a href="#3">
+        <button id="rezervaceBtn" class="button">Zarezervovat termín</button>
+        </a>
     </div>
-    <div class="rezervacniFormular">
-        <button id="rezervaceClosed">Zavřít formlulář</button>
-        <p>Jméno a příjmení</p>
-        <p>E-mail</p>
-        <p>Telefon</p>
-        <p>Typ rezervace</p>
-        <p>Výuka</p>
-        <p>Hudební produkce</p>
-        <p>Datum</p>
-        <p>Čas</p>
-        <p>místo</p>
-        <p>Se zkouškou</p>
-        <button>Odeslat objednávku</button>
+</div>
+    <div id="3" class="treti-sekce">
+        <div class="formular">
+            <button id="rezervaceClosed" class="button">Zavřít formlulář</button>
+
+           <form class="formular" action="">
+            <input type="text" placeholder="Jméno a příjmení">
+            <input type="text" placeholder="E-mail">
+            <input type="text" placeholder="Telefonní číslo">
+            <input id="datum" type="date" placeholder="Datum">
+            <input type="time" placeholder="Čas">
+            <select name="misto" id="misto">
+                <option value="" disabled selected hidden>Na jaké adrese</option>
+                <option value="pracoviste">Na adrese vyučujícího</option>
+                <option value="doma">Na adrese objednatele služby</option>
+            </select>
+            <input type="text" placeholder="Adresa">
+            <select name="typRezerevace" id="typRezervace">
+                <option value="" disabled selected hidden>Vyberte typ rezervace</option>
+                 <option value="vyuka">Výuka</option>
+                 <option value="hudebniProdukce"> Hudební produkce</option>
+            </select>
+            <select name="zkouska" id="seZkouskou">
+                <option value="seZkouskou">Se zkouškou</option>
+                <option value="bezZkousky">Bez zkoušky</option>
+            </select>
+           
+           </form>
+           
+       
+            <button id="odeslat" class="button">Odeslat objednávku</button>
+        </div>    
     </div>
   </div>
   <script>
-document.getElementById("rezervaceBtn").addEventListener("click", function () {
-    
-    // Získá reference na tlačítka, šipky a formuláře
-    const rezervaceBtn = document.getElementById("rezervaceBtn");
-    const rezervacniFormular = document.querySelector(".rezervacniFormular");
-    const sipka = document.getElementById("sipka");
+document.getElementById("rezervaceBtn").addEventListener("click", function(){
 
-    // Skrytí šipky
-    sipka.style.display = "none";
+    let tretiSekce = document.getElementById("3");
 
-    // Skrytí tlačítka pro rezervaci
-    rezervaceBtn.style.display = "none";
+    tretiSekce.style.display = "grid";
+})
 
-    // Zobrazení formuláře pod iframe
-    rezervacniFormular.style.gridArea = "4"; 
-    rezervacniFormular.style.display = "block";  // Zajistí zobrazení formuláře
+document.getElementById("rezervaceClosed").addEventListener("click", function() {
+    let btnClosed = document.getElementById("3");
 
-});
-
-document.getElementById("rezervaceClosed").addEventListener("click", function () {
-
-    const rezervaceBtn = document.getElementById("rezervaceBtn");
-    const rezervacniFormular = document.querySelector(".rezervacniFormular");
-    const sipka = document.getElementById("sipka");
-
-    // Skrytí formuláře
-    rezervacniFormular.style.display = "none";
-
-    // Obnovení zobrazení šipky
-    sipka.style.display = "block";
-
-    // Opětovné zobrazení tlačítka pro rezervaci
-    rezervaceBtn.style.display = "block";
-});
-
-
+    btnClosed.style.display = "none"
+})
   </script>
 </body>
 </html>
